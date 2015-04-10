@@ -1,6 +1,7 @@
 // Include required libraries
 #include <Adafruit_GFX.h>
 #include <Colorduino_GFX.h>
+#include <Wire.h>
 
 // Color definitions
 #define BLACK    0x0000
@@ -15,27 +16,46 @@
 // Create new Colorduino instance
 ColorduinoPanel Colorduino;
 
-
+int x;
 
 void setup() {  
   // Set port mode, load data structures and start the timer
   Colorduino.init();
   // Set white balance
   Colorduino.setWhiteBalance(36, 63, 63);
+  
+  Wire.begin(4);                // join i2c bus with address #4
+  Wire.onReceive(receiveEvent); // register event
+  Serial.begin(9600);           // start serial for output
 }
 
 void loop() {
   
-  available();
-  delay(3000);
-  away();
-  delay(3000);
+if(x == 1){
   busy();
-  delay(3000);
+}
+if(x == 2){
+  available();
+}
+if(x == 3){
+  away();
+}
+if(x == 4){
   donotdisturb();
-  delay(3000);
+}
 
   }
+  
+void receiveEvent(int howMany)
+{
+ /* while(1 < Wire.available()) // loop through all but the last
+  {
+    char c = Wire.read(); // receive byte as a character
+    Serial.print(c);         // print the character
+  }*/
+  x = Wire.read();    // receive byte as an integer
+  Serial.println(x);         // print the integer
+}
 
 void away(){
   Colorduino.fillScreen(BLACK);
