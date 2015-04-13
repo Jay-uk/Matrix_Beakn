@@ -65,6 +65,7 @@ void receiveEvent(int howMany)
 
 void rain(){
   if(draw==0){
+  Colorduino.fillScreen(BLACK);
   Colorduino.drawLine(2, 0, 5, 0, WHITE);
   Colorduino.drawLine(1, 1, 6, 1, WHITE);
   Colorduino.drawLine(0, 2, 7, 2, WHITE);
