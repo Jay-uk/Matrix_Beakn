@@ -25,7 +25,6 @@ void setup() {
   // Set white balance
   Colorduino.setWhiteBalance(36, 63, 63);
   
-  rainbow(25);
   
   Wire.begin(4);                // join i2c bus with address #4
   Wire.onReceive(receiveEvent); // register event
@@ -48,9 +47,12 @@ if(x == 3){
 if(x == 4){
   donotdisturb();
 }
-
+if(x == 5){
+  rain();
   }
-  
+}
+
+
 void receiveEvent(int howMany)
 {
  /* while(1 < Wire.available()) // loop through all but the last
@@ -58,6 +60,7 @@ void receiveEvent(int howMany)
     char c = Wire.read(); // receive byte as a character
     Serial.print(c);         // print the character
   }*/
+  draw = 0;
   x = Wire.read();    // receive byte as an integer
   Serial.println(x);         // print the integer
 }
@@ -90,6 +93,7 @@ void rain(){
 }
 
 void away(){
+  if(draw==0){
   Colorduino.fillScreen(BLACK);
   Colorduino.fillRect(0, 0, 8, 8, YELLOW);
   Colorduino.drawLine(1, 1, 1, 4, WHITE);
@@ -101,9 +105,12 @@ void away(){
   Colorduino.drawPixel(7, 7, BLACK);
   Colorduino.drawPixel(1, 1, YELLOW);
   Colorduino.swapBuffers(true);
+  draw = 1;
+  }
 }
   
 void donotdisturb(){
+  if(draw==0){
   Colorduino.fillScreen(BLACK);
   Colorduino.fillRect(0, 0, 8, 8, RED);
   Colorduino.fillRect(1, 3, 6, 2, WHITE);
@@ -115,9 +122,12 @@ void donotdisturb(){
   Colorduino.drawPixel(0, 7, BLACK);
   Colorduino.drawPixel(7, 7, BLACK);
   Colorduino.swapBuffers(true);
+  draw = 1;
+  }
 }
   
 void busy(){
+  if(draw==0){
   Colorduino.fillScreen(BLACK);
   Colorduino.drawLine(1, 0, 7, 6, RED);
   Colorduino.drawLine(0, 1, 6, 7, RED);
@@ -126,10 +136,12 @@ void busy(){
   Colorduino.drawLine(1, 1, 6, 6, RED);
   Colorduino.drawLine(6, 1, 1, 6, RED);
   Colorduino.swapBuffers(true);
-  
+  draw = 1;
+  }
 }
 
 void available(){
+  if(draw==0){
   Colorduino.fillScreen(BLACK);
   Colorduino.fillRect(0, 0, 8, 8, GREEN);
   Colorduino.drawLine(1, 1, 1, 4, WHITE);
@@ -141,4 +153,6 @@ void available(){
   Colorduino.drawPixel(7, 7, BLACK);
   Colorduino.drawPixel(1, 1, GREEN);
   Colorduino.swapBuffers(true);
+  draw = 1;
+  }
 }
