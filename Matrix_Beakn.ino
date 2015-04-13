@@ -33,8 +33,6 @@ void setup() {
 
 void loop() {
   
-  rain();
-  
 if(x == 1){
   busy();
 }
