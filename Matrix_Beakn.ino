@@ -17,6 +17,7 @@
 ColorduinoPanel Colorduino;
 
 int x;
+int draw = 0;
 
 void setup() {  
   // Set port mode, load data structures and start the timer
@@ -24,12 +25,16 @@ void setup() {
   // Set white balance
   Colorduino.setWhiteBalance(36, 63, 63);
   
+  rainbow(25);
+  
   Wire.begin(4);                // join i2c bus with address #4
   Wire.onReceive(receiveEvent); // register event
   Serial.begin(9600);           // start serial for output
 }
 
 void loop() {
+  
+  rain();
   
 if(x == 1){
   busy();
@@ -55,6 +60,33 @@ void receiveEvent(int howMany)
   }*/
   x = Wire.read();    // receive byte as an integer
   Serial.println(x);         // print the integer
+}
+
+void rain(){
+  if(draw==0){
+  Colorduino.drawLine(2, 0, 5, 0, WHITE);
+  Colorduino.drawLine(1, 1, 6, 1, WHITE);
+  Colorduino.drawLine(0, 2, 7, 2, WHITE);
+  Colorduino.drawLine(4, 3, 4, 7, YELLOW);
+  Colorduino.drawPixel(3, 7, YELLOW);
+  Colorduino.drawPixel(0, 3, BLUE);
+  Colorduino.drawPixel(1, 5, BLUE);
+  Colorduino.drawPixel(1, 6, CYAN);
+  Colorduino.drawPixel(2, 4, CYAN);
+  Colorduino.drawPixel(0, 4, CYAN);
+  Colorduino.drawPixel(0, 7, BLUE);
+  Colorduino.drawPixel(2, 7, BLUE);
+  Colorduino.drawLine(3, 3, 3, 5, BLUE);
+  Colorduino.drawPixel(5, 3, CYAN);
+  Colorduino.drawPixel(5, 6, BLUE);
+  Colorduino.drawPixel(6, 4, CYAN);
+  Colorduino.drawPixel(6, 5, BLUE);
+  Colorduino.drawPixel(7, 3, CYAN);
+  Colorduino.drawPixel(7, 6, CYAN);
+  Colorduino.drawPixel(7, 7, BLUE);
+  Colorduino.swapBuffers(true);
+  draw = 1;
+  }
 }
 
 void away(){
