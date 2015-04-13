@@ -69,7 +69,55 @@ void receiveEvent(int howMany)
 }
 
 void drive(){
-  if(draw==0){
+
+    Colorduino.fillScreen(BLACK);
+    Colorduino.drawLine(3, 0, 4, 0, RED);
+    Colorduino.drawLine(2, 1, 4, 1, RED);
+    Colorduino.fillRect(1, 2, 7, 2, RED);
+    Colorduino.drawPixel(5, 0, WHITE);
+    Colorduino.drawPixel(5, 1, WHITE);
+    Colorduino.drawPixel(6, 1, WHITE);
+    Colorduino.drawPixel(2, 4, BLUE);
+    Colorduino.drawPixel(6, 4, BLUE);
+    Colorduino.drawPixel(0, 3, YELLOW);
+    Colorduino.drawLine(0, 6, 7, 6, WHITE);
+    //Colorduino.drawLine(4, 6, 7, 6, WHITE);
+    Colorduino.swapBuffers(true);
+    delay(500);
+    
+    Colorduino.fillScreen(BLACK);
+    Colorduino.drawLine(3, 0, 4, 0, RED);
+    Colorduino.drawLine(2, 1, 4, 1, RED);
+    Colorduino.fillRect(1, 2, 7, 2, RED);
+    Colorduino.drawPixel(5, 0, WHITE);
+    Colorduino.drawPixel(5, 1, WHITE);
+    Colorduino.drawPixel(6, 1, WHITE);
+    Colorduino.drawPixel(2, 4, BLUE);
+    Colorduino.drawPixel(6, 4, BLUE);
+    Colorduino.drawPixel(0, 3, YELLOW);
+    Colorduino.drawLine(0, 6, 5, 6, WHITE);
+    //Colorduino.drawLine(6, 6, 7, 6, WHITE);
+    Colorduino.swapBuffers(true);
+    
+    delay(500);
+    
+    Colorduino.fillScreen(BLACK);
+    Colorduino.drawLine(3, 0, 4, 0, RED);
+    Colorduino.drawLine(2, 1, 4, 1, RED);
+    Colorduino.fillRect(1, 2, 7, 2, RED);
+    Colorduino.drawPixel(5, 0, WHITE);
+    Colorduino.drawPixel(5, 1, WHITE);
+    Colorduino.drawPixel(6, 1, WHITE);
+    Colorduino.drawPixel(2, 4, BLUE);
+    Colorduino.drawPixel(6, 4, BLUE);
+    Colorduino.drawPixel(0, 3, YELLOW);
+    Colorduino.drawLine(0, 6, 3, 6, WHITE);
+    Colorduino.drawLine(6, 6, 7, 6, WHITE);
+    Colorduino.swapBuffers(true);
+    
+    delay(500);
+    
+    Colorduino.fillScreen(BLACK);
     Colorduino.drawLine(3, 0, 4, 0, RED);
     Colorduino.drawLine(2, 1, 4, 1, RED);
     Colorduino.fillRect(1, 2, 7, 2, RED);
@@ -82,8 +130,24 @@ void drive(){
     Colorduino.drawLine(0, 6, 1, 6, WHITE);
     Colorduino.drawLine(4, 6, 7, 6, WHITE);
     Colorduino.swapBuffers(true);
-    draw = 1;
-  }
+    
+    delay(500);
+    
+    Colorduino.fillScreen(BLACK);
+    Colorduino.drawLine(3, 0, 4, 0, RED);
+    Colorduino.drawLine(2, 1, 4, 1, RED);
+    Colorduino.fillRect(1, 2, 7, 2, RED);
+    Colorduino.drawPixel(5, 0, WHITE);
+    Colorduino.drawPixel(5, 1, WHITE);
+    Colorduino.drawPixel(6, 1, WHITE);
+    Colorduino.drawPixel(2, 4, BLUE);
+    Colorduino.drawPixel(6, 4, BLUE);
+    Colorduino.drawPixel(0, 3, YELLOW);
+    //Colorduino.drawLine(0, 6, 1, 6, WHITE);
+    Colorduino.drawLine(1, 6, 7, 6, WHITE);
+    Colorduino.swapBuffers(true);
+    
+    delay(500);
 }
 
 void rain(){
