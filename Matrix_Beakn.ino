@@ -24,16 +24,17 @@ void setup() {
   Colorduino.init();
   // Set white balance
   Colorduino.setWhiteBalance(36, 63, 63);
-  
+  boot();
   
   Wire.begin(4);                // join i2c bus with address #4
   Wire.onReceive(receiveEvent); // register event
   Serial.begin(9600);           // start serial for output
+  
+  clear();
 }
 
 void loop() {
   
-drive();
   
 if(x == 1){
   busy();
@@ -53,6 +54,9 @@ if(x == 5){
 if(x == 6){
   drive();
   }
+if(x == 7){
+  clear();
+  }
 }
 
 
@@ -66,6 +70,28 @@ void receiveEvent(int howMany)
   draw = 0;
   x = Wire.read();    // receive byte as an integer
   Serial.println(x);         // print the integer
+}
+
+void boot(){
+  Colorduino.fillScreen(BLACK);
+  Colorduino.fillRect(0, 0, 8, 5, WHITE);
+  Colorduino.fillRect(1, 5, 5, 7, WHITE);
+  Colorduino.drawLine(2, 6, 2, 7, BLACK);
+  Colorduino.drawLine(4, 6, 4, 7, BLACK);
+  Colorduino.drawLine(6, 6, 6, 7, BLACK);
+  Colorduino.drawPixel(3, 3, BLACK);
+  Colorduino.drawPixel(1, 2, BLACK);
+  Colorduino.drawPixel(5, 2, BLACK);
+  Colorduino.swapBuffers(true);
+  delay(50);
+}
+
+void clear(){
+  if(draw==0){
+  Colorduino.fillScreen(BLACK);
+  Colorduino.swapBuffers(true);
+  draw = 1;
+  }
 }
 
 void drive(){
